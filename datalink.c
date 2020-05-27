@@ -49,10 +49,7 @@ static int phl_ready = 0;				//物理层是否ready
 bool arrived[NR_BUFS];					//接收方输入缓存的bit map
 bool no_nak = true;						//是否发送了NAK，true则不再重复发送
 
-static unsigned char inc(unsigned char x)
-{
-	return ++x & MAX_SEQ;
-}
+#define inc(k)  (k = ++k & MAX_SEQ)
 
 static bool between(int a, int b, int c)
 { //如果b在a和c组成的窗口之间，则返回true，否则返回false
